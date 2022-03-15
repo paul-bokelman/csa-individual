@@ -1,4 +1,6 @@
-# Techtalks (notes)
+{% include navigation.html %}
+
+## Techtalks (notes)
 
 All my notes for CSA tech talks
 

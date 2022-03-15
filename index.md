@@ -1,8 +1,4 @@
-# Paul Bokelman CSA
-
-## [CSA Plans](/plans)
-
-## [Techtalks](/techtalks)
+{% include navigation.html %}
 
 ## Review tickets
 
