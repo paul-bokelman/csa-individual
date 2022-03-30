@@ -4,14 +4,13 @@
 
 ### TT2 Data Structures (3/29/2022) (Calculator)
 
+A calculator that takes a string as an input first converts the string into an array of characters. It then loops through the array, performing the appropriate mathematical operation on each character. Finally, it outputs the result to the user.
+
+
+A calculator that takes in a string first parses the string to identify the numbers and operators present. Once it has identified these elements, it then performs the appropriate mathematical operations to arrive at a result.
+
 ```java
-package tt2;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import tt2.Stack;
+import chal2.Stack;
 
 import java.util.*;
 
@@ -164,57 +163,43 @@ public class Calculator {
     }
 
     // Takes RPN and produces a final result
+    // Takes RPN and produces a final result
     private void rpnToResult() {
-        // Stack used to hold calculation while process RPN
-        Stack stack = new Stack();
-
-        // for loop to process RPN
-        for (String token : this.reverse_polish) {
-            // If the token is a number
-            if (!isOperator(token)) {
-                // Push number to stack
-                stack.push(token);
-            }
-            // else
-            else {
-                // Pop the two top entries
-                Double x1 = Double.valueOf((String) stack.pop());
-                Double x0 = Double.valueOf((String) stack.pop());
-
-                // Based off of Token operator calculate result
-                Double result;
+        Stack calculation = new Stack();
+        for (String token : reverse_polish) {
+            if (isOperator(token)) {
+                Double operand1 = Double.parseDouble(calculation.pop().toString());
+                Double operand2 = Double.parseDouble(calculation.pop().toString());
                 switch (token) {
                     case "+":
-                        result = x0 + x1;
+                        calculation.push(operand1 + operand2);
                         break;
                     case "-":
-                        result = x0 - x1;
+                        calculation.push(operand2 - operand1);
                         break;
                     case "*":
-                        result = x0 * x1;
+                        calculation.push(operand1 * operand2);
                         break;
                     case "/":
-                        result = x0 / x1;
+                        calculation.push(operand2 / operand1);
                         break;
                     case "%":
-                        result = x0 % x1;
+                        calculation.push(operand2 % operand1);
                         break;
                     case "^":
-                        result = Math.pow(x0, x1);
+                        calculation.push(Math.pow(operand2, operand1));
                         break;
                     case "sqrt":
-                        result = Math.sqrt(x0);
+                        calculation.push(Math.sqrt(operand1));
                         break;
-                    default:
-                        result = 0.0;
                 }
-
-                // Push result back onto the stack
-                stack.push(String.valueOf(result));
+            } else {
+                calculation.push(Double.parseDouble(token));
             }
         }
-        // Pop final result and set as final result for expression
-        this.result = Double.valueOf((String) stack.pop());
+
+        this.result = calculation.pop().toString();
+
     }
 
     // Print the expression, terms, and result
@@ -286,13 +271,6 @@ public class Calculator {
         userInput = input.next();
         Calculator test = new Calculator(userInput);
         System.out.print("Result:\n" + test);
-
-        /**
-         * working on bug
-         * Calculator sqrtMath = new Calculator("sqrt9");
-         * System.out.println("Square Root Math\n" + sqrtMath);
-         * System.out.println();
-         */
     }
 }
 ```
