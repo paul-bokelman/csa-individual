@@ -6,6 +6,28 @@
 
 [Runtime Link](https://replit.com/@PaulBokelman/Data-Structures-Challenge-4?v=1)
 
+**Selection Sort (n^2)**
+
+```java
+import java.util.ArrayList;
+
+public class SelectionSort {
+    public static void selectionSort(ArrayList<Integer> arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            int min = i;
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (arr.get(j) < arr.get(min)) {
+                    min = j;
+                }
+            }
+            int temp = arr.get(i);
+            arr.set(i, arr.get(min));
+            arr.set(min, temp);
+        }
+    }
+}
+```
+
 **Bubble Sort (n^2)**
 
 ```java
@@ -97,10 +119,91 @@ public class MergeSort {
 }
 ```
 
+**Full Sort**
+
+```java
+import java.util.Scanner;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+
+public class Sorts {
+    private final ArrayList<Integer> data = new ArrayList<>();
+    private final Duration timeElapsed;
+
+    public Sorts(int size, String sortType) {
+
+        Instant start = Instant.now();
+        for (int i = 0; i < size; i++) {
+            data.add((int) (Math.random() * (size + 1)));
+        }
+
+        switch (sortType) {
+            case "1":
+                BubbleSort.bubbleSort(data);
+                break;
+            case "2":
+                InsertionSort.insertionSort(data);
+                break;
+            case "3":
+                MergeSort.mergeSort(data);
+                break;
+            case "4":
+                SelectionSort.selectionSort(data);
+                break;
+            default:
+                System.out.println("Invalid sort type");
+                break;
+        }
+
+        Instant end = Instant.now(); // time capture -- end
+        this.timeElapsed = Duration.between(start, end);
+    }
+
+    public ArrayList<Integer> getData() {
+        return data;
+    }
+
+    public int getTimeElapsed() {
+        return timeElapsed.getNano();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String sortOption;
+        int sum = 0, time = 0;
+        int TIMES = 12;
+        int SIZE = 5000;
+
+        while (true) {
+            System.out.println(
+                    "Calculate Complexity for BubbleSort (1), Insertion Sort (2), MergeSort (3) or SelectionSort (4)?");
+            sortOption = scanner.next();
+            if (sortOption.equals("1") || sortOption.equals("2") || sortOption.equals("3") || sortOption.equals("4"))
+                break;
+        }
+
+        for (int i = 0; i < TIMES; i++) {
+            Sorts s = new Sorts(SIZE, sortOption);
+            for (int j = 0; j < s.getData().size(); j++) {
+                sum += s.getData().get(j);
+            }
+            System.out.println("Average random: " + sum / ((i + 1) * SIZE));
+            System.out.println("Nanoseconds: " + s.getTimeElapsed());
+            time += s.getTimeElapsed();
+        }
+        System.out.println("Average random: " + sum / (TIMES * SIZE));
+        System.out.println("Total Nanoseconds: " + time);
+        System.out.println("Total Seconds: " + time / 1000000000.0);
+        scanner.close();
+    }
+
+}
+```
+
 ### TT2 Data Structures (3/29/2022) (Calculator)
 
 A calculator that takes a string as an input first converts the string into an array of characters. It then loops through the array, performing the appropriate mathematical operation on each character. Finally, it outputs the result to the user.
-
 
 A calculator that takes in a string first parses the string to identify the numbers and operators present. Once it has identified these elements, it then performs the appropriate mathematical operations to arrive at a result.
 
