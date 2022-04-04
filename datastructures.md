@@ -2,6 +2,101 @@
 
 ## Data Structures Work
 
+### TT3 Data Structures (4/4/2022) (Sorts)
+
+[Runtime Link](https://replit.com/@PaulBokelman/Data-Structures-Challenge-4?v=1)
+
+**Bubble Sort (n^2)**
+
+```java
+import java.util.ArrayList;
+
+public class BubbleSort {
+    public static void bubbleSort(ArrayList<Integer> arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = 0; j < arr.size() - 1; j++) {
+                if (arr.get(j) > arr.get(j + 1)) {
+                    int temp = arr.get(j);
+                    arr.set(j, arr.get(j + 1));
+                    arr.set(j + 1, temp);
+                }
+            }
+        }
+    }
+}
+```
+
+**Insertion Sort (n^2)**
+
+```java
+import java.util.ArrayList;
+
+public class InsertionSort {
+    public static void insertionSort(ArrayList<Integer> arr) {
+        int n = arr.size();
+        for (int i = 1; i < n; ++i) {
+            int key = arr.get(i);
+            int j = i - 1;
+            while (j >= 0 && arr.get(j) > key) {
+                arr.set(j + 1, arr.get(j));
+                j = j - 1;
+            }
+            arr.set(j + 1, key);
+        }
+
+    }
+}
+```
+
+**Merge Sort (n \* log(n))**
+
+```java
+import java.util.ArrayList;
+
+public class MergeSort {
+    public static void mergeSort(ArrayList<Integer> arr) {
+        int n = arr.size();
+        if (n < 2)
+            return;
+        ArrayList<Integer> left = new ArrayList<Integer>();
+        ArrayList<Integer> right = new ArrayList<Integer>();
+        for (int i = 0; i < n / 2; i++) {
+            left.add(arr.get(i));
+        }
+        for (int i = n / 2; i < n; i++) {
+            right.add(arr.get(i));
+        }
+        mergeSort(left);
+        mergeSort(right);
+        merge(left, right, arr);
+    }
+
+    private static void merge(ArrayList<Integer> left, ArrayList<Integer> right, ArrayList<Integer> arr) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) < right.get(j)) {
+                arr.set(k, left.get(i));
+                i++;
+            } else {
+                arr.set(k, right.get(j));
+                j++;
+            }
+            k++;
+        }
+        while (i < left.size()) {
+            arr.set(k, left.get(i));
+            i++;
+            k++;
+        }
+        while (j < right.size()) {
+            arr.set(k, right.get(j));
+            j++;
+            k++;
+        }
+    }
+}
+```
+
 ### TT2 Data Structures (3/29/2022) (Calculator)
 
 ```java
