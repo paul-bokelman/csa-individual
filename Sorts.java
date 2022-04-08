@@ -71,7 +71,6 @@ public class Sorts {
         System.out.println("Average random: " + sum / (TIMES * SIZE));
         System.out.println("Total Nanoseconds: " + time);
         System.out.println("Total Seconds: " + time / 1000000000.0);
-        scanner.close();
     }
 
 }
