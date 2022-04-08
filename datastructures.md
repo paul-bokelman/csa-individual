@@ -2,6 +2,8 @@
 
 ## Data Structures Work
 
+[All Data Structures Work](https://replit.com/@PaulBokelman/csa-individual)
+
 ### TT3 Data Structures (4/4/2022) (Sorts)
 
 [Runtime Link](https://replit.com/@PaulBokelman/Data-Structures-Challenge-4?v=1)
