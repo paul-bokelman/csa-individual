@@ -8,12 +8,13 @@ public class SelectionSort {
         for (int i = 0; i < arr.size(); i++) {
             int min = i;
             for (int j = i + 1; j < arr.size(); j++) {
-                comparisons++;
+                
                 if (arr.get(j) < arr.get(min)) {
-                    swaps++;
+                    comparisons++;
                     min = j;
                 }
             }
+            swaps++;
             int temp = arr.get(i);
             arr.set(i, arr.get(min));
             arr.set(min, temp);
