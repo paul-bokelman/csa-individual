@@ -15,7 +15,7 @@ public class Calculator {
         OPERATORS.put("-", 4);
         OPERATORS.put("^", 2);
         OPERATORS.put("sqrt", 2);
-        OPERATORS.put("pythag", 2);
+        OPERATORS.put("pythagorean", 2);
     }
 
     private final Map<String, Integer> SEPARATORS = new HashMap<>();
@@ -71,7 +71,7 @@ public class Calculator {
                             break;
                         case "^":
                             calculation.push(Math.pow(num1, num2));
-                        case "pythag":
+                        case "pythagorean":
                             calculation.push(Math.pow((Math.pow(num1, 2) + Math.pow(num2, 2)), 0.5));
                     }
                 }
@@ -133,7 +133,7 @@ public class Calculator {
                 case "%":
                 case "^":
                 case "sqrt":
-                case "pythag":
+                case "pythagorean":
                     while (!tokenStack.empty() && isOperator((String) tokenStack.peek())) {
                         if (isPrecedent(token, (String) tokenStack.peek())) {
                             reverse_polish.add((String) tokenStack.pop());
@@ -190,7 +190,7 @@ public class Calculator {
         System.out.println("All Math4\n" + allMath4);
         System.out.println("\n-------------------------\n");
 
-        Calculator pythagorean = new Calculator("3 pythagorean 4");
+        Calculator pythagorean = new Calculator("5 pythagorean 12");
         System.out.println("pythagorean theorem\n" + pythagorean);
         System.out.println("\n-------------------------\n");
 
