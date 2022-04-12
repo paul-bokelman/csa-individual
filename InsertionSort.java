@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 
+// works the same as selection sort, but doesn't need to store a temporary variable.
 public class InsertionSort {
     public static void insertionSort(ArrayList<Integer> arr) {
         int swaps = 0;

@@ -1,3 +1,5 @@
+// works by removing all the elements from the queue and pushing them to a stack. Then it pops out all the elements from the stack and push them back to the queue. The queue is now reversed.
+
 import java.util.*;
 
 public class ReverseQueue {

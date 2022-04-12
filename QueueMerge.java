@@ -1,3 +1,5 @@
+// uses queue class and merges two queues together in a sorted result
+
 public class QueueMerge {
 
     public static Queue<Integer> merge(Queue<Integer> one, Queue<Integer> two) {

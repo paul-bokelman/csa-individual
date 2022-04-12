@@ -7,6 +7,8 @@ public class Calculator {
     private Double result;
 
     private final Map<String, Integer> OPERATORS = new HashMap<>();
+    // all operators
+    // takes into account the order of operations
     {
         OPERATORS.put("*", 3);
         OPERATORS.put("/", 3);
@@ -42,6 +44,10 @@ public class Calculator {
     }
 
     private void rpnToResult() {
+        // uses reverse polish notation to calculate the result: if parsed token is a
+        // number it is added to the stack, if it is an operator it is popped two
+        // numbers from the stack and the result is calculated and added to the stack,
+        // obeys the order of operations from previously set order.
         Stack calculation = new Stack();
         for (int i = 0; i < this.reverse_polish.size(); i++) {
             if (isNumeric(this.reverse_polish.get(i))) {
@@ -193,13 +199,5 @@ public class Calculator {
         Calculator pythagorean = new Calculator("5 pythagorean 12");
         System.out.println("pythagorean theorem\n" + pythagorean);
         System.out.println("\n-------------------------\n");
-
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter expression:");
-        String in = input.nextLine();
-        Calculator custom = new Calculator(in);
-        System.out.println("Custom Expression: " + custom);
-        System.out.println("\n-------------------------\n");
-        input.close();
     }
 }

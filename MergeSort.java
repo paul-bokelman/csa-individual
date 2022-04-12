@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// array is divided into two parts, each part is sorted and ultimately merged back together.
 public class MergeSort {
     public static void mergeSort(ArrayList<Integer> arr) {
         int n = arr.size();

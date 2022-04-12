@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
-public class BubbleSort{
-    
+// compares pairs of elements and swaps them if the first element is greater than the second element. This process is repeated until the array is sorted from the smallest to the largest element.
+public class BubbleSort {
+
     public static void bubbleSort(ArrayList<Integer> arr) {
         int swaps = 0;
         int comparisons = 0;

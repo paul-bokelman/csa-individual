@@ -1,6 +1,7 @@
 import java.util.Iterator;
 
 class Queue<T> implements Iterable<T> {
+
     LinkedList<T> head, tail;
 
     public void add(T data) {
@@ -25,11 +26,6 @@ class Queue<T> implements Iterable<T> {
         return this.tail;
     }
 
-    /**
-     * Returns the iterator object.
-     *
-     * @return this, instance of object
-     */
     public Iterator<T> iterator() {
         return new QueueIterator<>(this);
     }
@@ -96,20 +92,21 @@ class QueueManager<T> {
 
 class QueueTester {
     public static void main(String[] args) {
+        // object array of strings as input
         Object[] words = new String[] { "seven", "slimy", "snakes", "sallying", "slowly", "slithered", "southward" };
 
         QueueManager qWords = new QueueManager("Words");
-        for (Object word : words) {
+        for (Object word : words) { // adding all words to queue
             qWords.add(word);
             qWords.printQueue();
         }
-        for (Object word : words) {
+        for (Object word : words) { // removing all words from queue
             qWords.delete();
             qWords.printQueue();
         }
 
         Object[] numbers = new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        QueueManager qNums = new QueueManager("Integers", numbers);
+        QueueManager qNums = new QueueManager("Integers", numbers); // initializing queue with numbers
         qNums.printQueue();
     }
 }

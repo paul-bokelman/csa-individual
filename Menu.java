@@ -32,6 +32,7 @@ class MenuRow {
     String title;
     Runnable action;
 
+    // receives a string for the name and a runnable for the action
     public MenuRow(String title, Runnable action) {
         this.title = title;
         this.action = action;
@@ -46,7 +47,7 @@ class MenuRow {
     }
 
     public void run() {
-        action.run();
+        action.run(); // is run when user selects the row
     }
 }
 
@@ -54,12 +55,12 @@ class Driver {
     public static void main(String[] args) {
         MenuRow[] rows = new MenuRow[] {
                 new MenuRow("Sorts", () -> Sorts.main(null)),
-                new MenuRow("Matrix", () -> Matrix.main(null)),
                 new MenuRow("Reverse Queue", () -> ReverseQueue.main(null)),
                 new MenuRow("Queue", () -> QueueTester.main(null)),
-                new MenuRow("Swap", () -> IntByReference.main(null)),
                 new MenuRow("Calculator", () -> Calculator.main(null)),
                 new MenuRow("Merge Queue", () -> QueueMerge.main(null)),
+                // new MenuRow("Matrix", () -> Matrix.main(null)),
+                // new MenuRow("Swap", () -> IntByReference.main(null)),
                 new MenuRow("Exit", () -> main(null)),
         };
 
